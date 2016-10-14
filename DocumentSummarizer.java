@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FileParser {
+public class DocumentSummarizer {
 	public static Map<String, Integer> wordMap = new ConcurrentHashMap<String, Integer>();
 	public static Map<String, Map> fileMap = new HashMap<String, Map>();
 	
@@ -19,7 +19,7 @@ public class FileParser {
 	public static void parseFiles(){
 		try{
 			//InputStreamReader in = new InputStreamReader(System.in);
-			FileReader in = new FileReader("06_7.xml");
+			FileReader in = new FileReader("06_148.xml");
 			BufferedReader reader = new BufferedReader(in);
 			String reg1 = "^<catchphrase \"id.";
 			String reg2 = "<.";
@@ -59,9 +59,15 @@ public class FileParser {
 				}
 			}
 			System.out.println(wordMap.size());*/
-			System.out.println(wordHeap.remove().getKey());
-			System.out.println(wordHeap.remove().getKey());
-			System.out.println(wordHeap.remove().getKey());
+			Node n = wordHeap.remove();
+			Node n1 = wordHeap.remove();
+			Node n2 = wordHeap.remove();
+			System.out.println(n.getKey());
+			System.out.println(n1.getKey());
+			System.out.println(n2.getKey());
+			/*System.out.println(n.getData()+"  "+n.getKey());
+			System.out.println(n1.getData()+"  "+n1.getKey()); 
+			System.out.println(n2.getData()+"  "+n2.getKey());*/
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

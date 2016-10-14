@@ -7,11 +7,13 @@ import java.util.TreeSet;
 public class TrainingSet {
 	
 	public Set<String> trainingSet = new TreeSet<String>();
+	String[] noiseWords = {"The" ,"This", "There", "That", "a", "an", "is", "to", "be", "by", "were"};
 	
 	public void trainSet(String s){
 		String[] set = s.split(" ");
 		for (String string : set) {
-			trainingSet.add(string);
+			if(noiseWords.toString().indexOf(string)<0)
+				trainingSet.add(string);
 		}
 	}
 	

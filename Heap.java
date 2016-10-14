@@ -1,5 +1,7 @@
 package com.meet.RTD.DocumentSummarizer;
 
+import java.util.Arrays;
+
 public class Heap {
 	public Node[] heapArray;
 	public int maxSize;
@@ -10,8 +12,10 @@ public class Heap {
 	}
 	
 	public void insert(String key, int data){
-		if(currentIndex == maxSize)
-			return;
+		if(currentIndex == maxSize){
+			heapArray = Arrays.copyOf(heapArray, heapArray.length*2);
+			maxSize = heapArray.length;
+		}	
 		heapArray[currentIndex] = new Node(key,data);
 		percolateUp(currentIndex++);
 	}
